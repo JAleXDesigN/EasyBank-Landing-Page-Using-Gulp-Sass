@@ -1,0 +1,96 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+footer {
+    @extend .azulOscuro-bg;
+    @extend .blanco;
+    text-align: center;
+    padding: 3.9rem 0;
+    .logo-socials {
+        .socials {
+            margin: 2.5rem 0;
+            a {
+                @include m.separacion(1.2rem);
+                .social:hover path {
+                    fill: v.color("verde");
+                }
+            }
+        }
+    }
+    .footer-menu {
+        ul li {
+            padding: .75rem 0;
+            a {
+                @extend .blanco;
+                font-size: 1.6rem;
+                &:hover {
+                    @extend .verde;
+                }
+            }
+        }
+        @include m.medium {
+            @include m.grid(2, 0)
+        }
+    }
+    .btn-and-copy {
+        a {
+            @include m.btnDeg(1.25rem, 2.3rem, 3rem);
+            font-size: 1.6rem;
+            @extend .blanco;
+            margin: 3.2rem 0 2.3rem;
+        }
+        p {
+            font-size: 1.4rem;
+        }
+    }
+    .attribution {
+        p {
+            font-size: 1.4rem;
+        }
+        a {
+            font-size: 1.4rem;
+            @extend .blanco;
+            &:hover {
+                @extend .verde;
+            }
+        }
+    }
+}
+
+//MEDIA QUERIES
+footer {
+    @include m.large {
+        @include m.grid-tp3(25%, 40%, 35%);
+        text-align: start;
+        padding: 3.1rem 17rem;
+        .logo-socials {
+            @include m.flex-c(space-between, flex-start);
+            .socials {
+                margin: 0;
+                a {
+                    @include m.separacion(1rem);
+                }
+            }
+        }
+        .footer-menu {
+            ul li {
+                padding: .5rem 2rem;
+                a {
+                    font-size: 1.4rem;
+                    font-weight: 500;
+                }
+            }
+        }
+        .btn-and-copy {
+            @include m.flex-c(space-between, flex-end);
+            a {
+                margin: 0;
+            }
+        }
+        .attribution {
+            grid-row: 2 / 3;
+            grid-column: 1 / 4;
+            margin: 1.5rem auto 0;
+        }
+    }
+}

@@ -1,0 +1,92 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.section-about {
+    @extend .grisClaro-bg;
+    text-align: center;
+    padding: 5.3rem 0;
+    .main-about {
+        padding: 0 2.4rem;
+        h2 {
+            font-size: 3.6rem;
+            margin: 1.2rem 0 1.2rem;
+            line-height: 1.1;
+        }
+    }
+    p {
+        font-size: 1.6rem;
+        line-height: 1.5;
+    }
+    .cards {
+        margin-top: 4.7rem;
+        .card {
+            padding: 1rem 2.4rem;
+            margin-bottom: 1.2rem;
+            h3 {
+                margin: 2.2rem 0 2rem;
+            }
+        }
+    }
+}
+
+//MEDIA QUERIES
+.section-about {
+    @include m.medium {
+        padding: 5.3rem 0;
+        text-align: start;
+        .main-about {
+            p {
+                max-width: 50rem;
+            }
+        }
+        .cards {
+            margin-top: 4.7rem;
+            @include m.grid(2, 2rem);
+        }
+    }
+    @include m.large {
+        padding: 5rem 12.5rem;
+        .main-about {
+            padding: 0;
+            p {
+                max-width: 50rem;
+            }
+        }
+        .cards {
+            margin-top: 4.7rem;
+            @include m.grid(4, 2rem);
+            .card {
+                padding: 0;
+            }
+        }
+    }
+    @include m.extraLarge {
+        padding: 10.1rem 17rem;
+        .main-about {
+            padding: 1.1rem 0;
+            h2 {
+                font-size: 4.4rem;
+            }
+            p {
+                margin: 1.3rem 0;
+                font-size: 1.6rem;
+            }
+        }
+        .cards {
+            padding: 1.1rem 0;
+            .card {
+                padding: 0;
+                h3 {
+                    margin: 4rem 0 2.8rem;
+                }
+                p {
+                    font-size: 1.6rem;
+                }
+            }
+        }
+    }
+}
+
+
+
+

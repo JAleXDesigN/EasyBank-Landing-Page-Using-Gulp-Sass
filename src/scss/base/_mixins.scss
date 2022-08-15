@@ -1,0 +1,229 @@
+@use 'variables'as v;
+
+
+@mixin small {
+    @media (min-width: v.$small) {
+        @content;
+    }
+}
+@mixin medium {
+    @media (min-width: v.$medium) {
+        @content;
+    }
+}
+@mixin large {
+    @media (min-width: v.$large) {
+        @content;
+    }
+}
+@mixin extraLarge {
+    @media (min-width: v.$extraLarge) {
+        @content;
+    }
+}
+@mixin xxLarge {
+    @media (min-width: v.$xxLarge) {
+        @content;
+    }
+}
+@mixin grid($columnas, $espaciado) {
+    display: grid;
+    grid-template-columns: repeat($columnas, 1fr);
+    gap: $espaciado;
+}
+@mixin grid-tp2($n1, $n2) {
+    display: grid;
+    grid-template-columns: $n1 $n2;
+}
+@mixin grid-tp3($n1, $n2, $n3) {
+    display: grid;
+    grid-template-columns: $n1 $n2 $n3;
+}
+@mixin grid-tp4($n1, $n2, $n3, $n4) {
+    display: grid;
+    grid-template-columns: $n1 $n2 $n3 $n4;
+}
+@mixin grid-tp5($n1, $n2, $n3, $n4, $n5) {
+    display: grid;
+    grid-template-columns: $n1 $n2 $n3 $n4 $n5;
+}
+@mixin contain-70 {
+    margin: 0 auto;
+    max-width: 70%;
+    width: 120rem;
+}
+@mixin contain-80 {
+    margin: 0 auto;
+    max-width: 80%;
+    width: 120rem;
+}
+@mixin contain-90 {
+    margin: 0 auto;
+    max-width: 90%;
+    width: 120rem;
+}
+@mixin publicSans($size, $weight) {
+    font-family: v.$publicSans;
+    @if $size { font-size: $size; }
+    @if $weight { font-weight: $weight; }
+}
+@mixin ubuntu($size, $weight) {
+    font-family: v.$ubuntu;
+    @if $size { font-size: $size; }
+    @if $weight { font-weight: $weight; }
+}
+@mixin pd($top, $left, $botton, $right) { 
+    padding: $top $left $botton $right; 
+}
+@mixin pd-tb($spacing) { 
+    padding: $spacing 0 $spacing 0; 
+}
+@mixin pd-lr($spacing) { 
+    padding: 0 $spacing 0 $spacing; 
+}
+@mixin pd-all($spacing) {
+    padding: $spacing; 
+} 
+@mixin mr($top, $left, $botton, $right) { 
+    margin: $top $left $botton $right; 
+}
+@mixin mr-tb($spacing) { 
+    margin: $spacing 0 $spacing 0; 
+}
+@mixin mr-lr($spacing) { 
+    margin: 0 $spacing 0 $spacing; 
+}
+@mixin mr-all($spacing) { 
+    margin: $spacing; 
+} 
+
+
+//Efecto subrayado hover
+@mixin hoverEffect ($height, $color, $origin, $mr-b) {
+    &::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: $height;
+        background: $color;
+        margin-bottom: $mr-b;
+        z-index: 1;
+        transform: scaleX(0);
+        transform-origin: $origin;
+        transition: transform 0.3s ease-in-out;
+    }
+    &:hover {
+        cursor: pointer;
+        &::before {
+            transform: scaleX(1);
+            transform-origin: $origin;
+        }
+    }
+}
+
+//Crear menu HAM
+@mixin menuHam ($width, $height, $margin, $color) {
+    width: 3rem;
+    margin: 0;
+    span {
+        display: block;
+        background-color: $color;
+        height: $height;
+        width: $width;
+        margin: $margin auto;
+        border-radius: 2px;
+    }
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+//Animacion del menu HAM
+@mixin animacionHam {
+    .br-1 {
+        transition: transform .4s ease-in-out;
+        &.animado {
+            transform: rotate(-45deg) translate(-4.5px, 4.5px);
+            transition: transform .4s ease-in-out;
+        } 
+    }
+    .br-2 {
+        transition: opacity .3s ease-in-out;
+        &.animado {
+            opacity: 0;
+        }
+    }
+    .br-3 {
+        transition: transform .4s ease-in-out;
+        &.animado {
+            transform: rotate(45deg) translate(-4px, -4px);
+            transition: transform .4s ease-in-out;
+        }
+    }
+}
+
+//Overlay
+@mixin overlayGris($angle, $display, $z) {
+    display: $display;
+    background: linear-gradient($angle, rgba(255,255,255,0.6671043417366946) 0%, rgba(17,17,17,0.4290091036414566) 51%, rgba(0,0,0,0.4290091036414566) 100%);
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    z-index: $z;
+    &.menu-open {
+        display: block;
+    }
+}
+
+//FLEX
+@mixin flex-c($justify, $align) {
+    display: flex;
+    flex-direction: column;
+    justify-content: $justify;
+    align-items: $align;
+}
+@mixin flex-r($justify, $align) {
+    display: flex;
+    flex-direction: row;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+//SEPARACION A LA DERECHA
+@mixin separacion($value){
+    margin-right: $value;
+    &:last-of-type {
+        margin-right: 0;
+    }
+}
+
+//Boton con sombreado
+@mixin getStartBtn ($p1, $p2, $color) {
+    @extend .rojo-bg;
+    @extend .blanco-text;
+    padding: $p1 $p2;
+    border-radius: 3rem;
+    font-size: 1.6rem;
+    box-shadow: $color 0px 10px 40px -7px;
+    &:hover {
+        cursor: pointer;
+        background-color: hsl(12, 94%, 46%);
+        box-shadow: hsl(12, 94%, 49%) 0px 10px 40px -7px;
+    }
+}
+
+//Boton con degradado
+@mixin btnDeg($p1, $p2, $br) {
+    background-image: linear-gradient(90deg, v.color("verde") 0% ,v.color("azul") 100%);
+    padding: $p1 $p2;
+    border-radius: $br;
+    display: inline-block;   
+    &:hover {
+        background-image: linear-gradient(90deg, v.color("verdeHover") 0% ,v.color("azulHover") 100%);
+    }         
+}

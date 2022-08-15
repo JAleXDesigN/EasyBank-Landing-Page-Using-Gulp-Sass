@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;700&display=swap');
+
+//TIPOGRAFIA
+$publicSans: 'Public Sans', sans-serif;
+
+//COLORES
+$colores: (
+    azulOscuro: hsl(233, 26%, 24%),
+    verde: hsl(136, 65%, 51%),
+    verdeHover: hsl(136, 65%, 70%),
+    azul: hsl(192, 70%, 51%),
+    azulHover: hsl(192, 70%, 70%),
+    azulGris: hsl(233, 8%, 62%),
+    grisClaro: hsl(220, 16%, 96%),
+    grisClaro2: hsl(0, 0%, 98%),
+    blanco: hsl(0, 0%, 100%)
+);
+
+@each $color,$valor in $colores {
+    .#{$color}-bg {
+        background-color: $valor;
+    }
+    .#{$color} {
+        color: $valor;
+    }
+}
+
+@function color($search) {
+    @return map-get($colores, $search);
+}
+
+
+//MEDIA QUERIES
+
+$small: 576px;
+$medium: 768px;
+$large: 992px;
+$extraLarge: 1200px;
+$xxLarge: 1400px;

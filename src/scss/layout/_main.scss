@@ -1,0 +1,100 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+main {
+    overflow: hidden;
+    .section-hero {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: center; 
+        @extend .grisClaro2-bg;
+        padding-bottom: 4.4rem;
+        .img-main-mobile {
+            width: 100%;
+            @include m.medium {
+                display: none;
+            }
+        }
+        .img-main-desktop {
+            display: none;
+            @include m.medium {
+                display: block;
+            }
+        }
+        @include m.medium {
+            flex-direction: row;
+            text-align: start;
+            padding-bottom: 0;
+            .info-main {
+                flex: 0 1 47%;
+                order: 1;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                align-self: center;
+            }  
+            .img-main-desktop {
+                flex: 0 1 53%;
+                order: 2;
+                position: relative;
+                .bg {
+                    transform: translate(25%, -16%) scale(1.35);
+                    position: relative;
+                    height: inherit;
+                }
+                .mockup {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    overflow: visible;
+                }
+            }
+        }
+    }
+}
+
+.info-main {
+    order: 2;
+    padding: 1.3rem 0;
+    height: max-content;
+    padding: 0 2.4rem;
+    h1 {
+        font-size: 3.9rem;
+        padding: 1.9rem 0;
+        line-height: 1.2;
+    }
+    p {
+        font-size: 1.5rem;
+        line-height: 1.5;
+    }
+    a {
+        @include m.btnDeg(1.4rem, 2.3rem, 3rem);
+        font-size: 1.6rem;
+        margin: 3.1rem 0;
+        @extend .blanco;
+    }
+    @include m.medium {
+        padding-left: 2.4rem;
+    }
+    @include m.large {
+        padding-left: 12.5rem;
+    }
+    @include m.extraLarge {
+        padding-left: 17rem;
+        h1 {
+            font-size: 5.45rem;
+        }
+        p {
+            font-size: 1.8rem;
+            max-width: 45rem;
+            margin: .5rem 0;
+        }
+    }
+}  
+
+
+
+
+
+
